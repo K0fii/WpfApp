@@ -12,14 +12,26 @@ namespace Aplikacja_Wpf.ModelViews
 {
     public class MainWindowModelView : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public MainWindowModelView()
         {
             NWDCommand = new RelayCommand(NWD);
         }
-        public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private string header;
+
+        public string Header
+        {
+            get { return header; }
+            set
+            {
+                header = value;
+                OnPropertyChanged(nameof(Header));
+            }
         }
         private string arg1;
         public string Arg1
@@ -44,15 +56,7 @@ namespace Aplikacja_Wpf.ModelViews
         }
         private string output;
 
-        public string Output
-        {
-            get { return output; }
-            set
-            {
-                output = value;
-                OnPropertyChanged(nameof(output));
-            }
-        }
+        
         public ICommand NWDCommand { get; set; }
         public void NWD(Object obj)
         {
@@ -69,7 +73,7 @@ namespace Aplikacja_Wpf.ModelViews
                         y -= x;
                 }
 
-                output = x.ToString();
+                Header = x.ToString();
             }
             catch (Exception ex)
             {

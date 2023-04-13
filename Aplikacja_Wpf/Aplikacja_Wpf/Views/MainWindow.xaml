@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Aplikacja_Wpf"
+        xmlns:viewmodel ="clr-namespace:Aplikacja_Wpf.ModelViews"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+Title="Algorytm Euklidesa - NWD (Największy Wspólny Dzielnik)" Height="450" Width="400">
+    <Window.DataContext>
+        <viewmodel:MainWindowModelView/>
+    </Window.DataContext>
     <Grid>
-
+        <Label Name="Arg1LB" Content="Argument 1:" HorizontalAlignment="Left" Margin="31,30,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+        <Label Name="Arg2LB" Content="Argument 2:" HorizontalAlignment="Left" Margin="31,101,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+        <TextBox Text ="{Binding Arg1}" HorizontalAlignment="Left" Margin="200,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontWeight="Bold" FontSize="24"/>
+        <TextBox Text="{Binding Arg2}" HorizontalAlignment="Left" Margin="200,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" FontWeight="Bold" FontSize="24"/>
+        <Button Name="FuncBT" Content="NWD" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Height="55" Width="124" 
+                Command="{Binding NWDCommand}"
+                CommandParameter="NWD"/>
+        <Label Content="{Binding Header}" HorizontalAlignment="Left" Margin="162,345,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
     </Grid>
 </Window>
